@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useUser } from "../../lib/context/UserContext";
 import { createChat } from "../../lib/chat";
 import { useNavigate } from "react-router-dom";
@@ -9,10 +8,11 @@ interface Props {
   title: string;
   image: string;
   isAdding?: boolean;
+  isOnline: boolean;
 }
 
 export default function DormCard(props: Props) {
-  const { currentUser, isLoading } = useUser();
+  const { currentUser } = useUser();
   const navigate = useNavigate();
 
   async function handleCreateChat() {
@@ -48,7 +48,7 @@ export default function DormCard(props: Props) {
 
             <div className="flex justify-between items-center w-full">
               <p className="font-bold truncate text-base">{props.title}</p>
-              <Badge isOnline={false} />
+              <Badge isOnline={props.isOnline} />
             </div>
           </button>
         </h2>

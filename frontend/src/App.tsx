@@ -21,39 +21,37 @@ import "react-toastify/dist/ReactToastify.css";
 
 import ChatPage from "./pages/chat/ChatPage";
 import UserList from "./pages/search/UserList";
-
+import { OnlineStatusProvider } from "./lib/context/OnlineContext";
 
 function App() {
-
-  
-
   return (
     <>
       <BrowserRouter>
         <UserProvider>
-          <NavigationBar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="register" element={<RegisterPage />} />
-            <Route path="profile" element={<ProfilePage />} />
+          <OnlineStatusProvider>
+            <NavigationBar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="register" element={<RegisterPage />} />
+              <Route path="profile" element={<ProfilePage />} />
 
-            <Route path="settings">
-              <Route element={<SettingLayout />}>
-                <Route path="profile" element={<ProfileSettingPage />} />
-                <Route path="account" element={<AccountPage />} />
-                <Route path="password" element={<PasswordChangePage />} />
-                <Route path="email" element={<EmailChangePage />} />
-                <Route path="delete" element={<DeleteAccountPage />} />
+              <Route path="settings">
+                <Route element={<SettingLayout />}>
+                  <Route path="profile" element={<ProfileSettingPage />} />
+                  <Route path="account" element={<AccountPage />} />
+                  <Route path="password" element={<PasswordChangePage />} />
+                  <Route path="email" element={<EmailChangePage />} />
+                  <Route path="delete" element={<DeleteAccountPage />} />
 
-                {/* <Route path="topup" element={<TopUpPage />} /> */}
-                {/* <Route
+                  {/* <Route path="topup" element={<TopUpPage />} /> */}
+                  {/* <Route
                   path="payment_information"
                   element={<PaymentInformationPage />}
                 /> */}
+                </Route>
               </Route>
-            </Route>
 
-            {/* <Route path="verify" element={<MailVerifyPage />} />
+              {/* <Route path="verify" element={<MailVerifyPage />} />
             <Route path="verify/success" element={<SuccessVerifyPage />} />
             <Route path="verify/:id" element={<AccVerifyTempPage />} />
 
@@ -61,17 +59,18 @@ function App() {
             <Route path="verify/success" element={<SuccessVerifyPage />} />
             <Route path="verify/:id" element={<AccVerifyTempPage />} /> */}
 
-            <Route path="chats" element={<ChatPage />} />
-            <Route path="chats/:chatId" element={<ChatPage />} />
+              <Route path="chats" element={<ChatPage />} />
+              <Route path="chats/:chatId" element={<ChatPage />} />
 
-            <Route path="users" element={<UserList />} />
+              <Route path="users" element={<UserList />} />
 
-            {/* <Route path="bookings/:bookingId/payment/success/:checkoutToken" element={<SuccessPaymentTempPage />} /> */}
+              {/* <Route path="bookings/:bookingId/payment/success/:checkoutToken" element={<SuccessPaymentTempPage />} /> */}
 
-            <Route path="/*" element={<NotFoundPage />} />
-          </Routes>
-          <Footbar />
-          <ToastContainer />
+              <Route path="/*" element={<NotFoundPage />} />
+            </Routes>
+            <Footbar />
+            <ToastContainer />
+          </OnlineStatusProvider>
         </UserProvider>
       </BrowserRouter>
     </>
