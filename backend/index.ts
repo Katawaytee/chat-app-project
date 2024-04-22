@@ -95,7 +95,19 @@ let onlineUsers: { userId: string; socketId: string }[] = [];
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
 
-  // add new user
+  // group chat
+
+  socket.on("send-group-message", (message, roomId) => {
+    socket.to(roomId).emit("receive-group-message", message);
+  });
+
+  socket.on("join-room", (roomId, callback) => {
+    socket.join(roomId);
+    callback();
+  });
+
+  // online status
+
   socket.on("new-user-add", (newUserId) => {
     if (!onlineUsers.some((user) => user.userId === newUserId)) {
       // if user is not added before
