@@ -1,13 +1,17 @@
+import { useParams } from "react-router-dom";
+
 const GroupChatRoom = () => {
+  let { id } = useParams();
+
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col" style={{ height: "calc(100vh - 112px)" }}>
       {/* Header */}
       <div className="bg-gray-800 text-white p-4 text-center font-bold text-sm">
-        GROUP xxx
+        GROUP {id}
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-grow">
+      <div className="flex-grow overflow-y-auto">
         {/* Sender Message */}
         <div className="flex justify-end">
           <div className="bg-emerald-500 text-white p-2 rounded-lg m-2 max-w-xs">
