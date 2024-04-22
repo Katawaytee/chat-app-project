@@ -1,4 +1,4 @@
-const Badge = ({ isOnline }: { isOnline: boolean }) => {
+const Badge = ({ isOnline }: { isOnline: boolean | undefined }) => {
   const status = isOnline ? "Online" : "Offline";
   const color = isOnline ? "bg-green-300" : "bg-gray-300";
 

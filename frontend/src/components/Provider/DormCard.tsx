@@ -8,7 +8,8 @@ interface Props {
   title: string;
   image: string;
   isAdding?: boolean;
-  isOnline: boolean;
+  isOnline?: boolean;
+  isGroup?: boolean;
 }
 
 export default function DormCard(props: Props) {
@@ -38,7 +39,10 @@ export default function DormCard(props: Props) {
           height="494"
           className="absolute inset-0 w-full h-full  object-cover"
           style={{ color: "transparent" }}
-          src={props.image}
+          src={
+            props.image ||
+            "https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
         />
       </div>
       <div className="flex flex-wrap items-center mt-6 w-full ">
@@ -48,7 +52,7 @@ export default function DormCard(props: Props) {
 
             <div className="flex justify-between items-center w-full">
               <p className="font-bold truncate text-base">{props.title}</p>
-              <Badge isOnline={props.isOnline} />
+              {!props.isGroup && <Badge isOnline={props.isOnline} />}
             </div>
           </button>
         </h2>

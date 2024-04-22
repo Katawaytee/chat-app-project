@@ -12,6 +12,8 @@ function UserList() {
   const [usersData, setUsersData] = useState<any[]>([]);
   const [onlineUsers, setOnlineUsers] = useState<onlineUsersType[]>([]);
 
+  console.log("usersData", usersData);
+
   const { currentUser } = useUser();
 
   async function getUsers() {

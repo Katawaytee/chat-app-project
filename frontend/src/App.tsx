@@ -22,6 +22,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ChatPage from "./pages/chat/ChatPage";
 import UserList from "./pages/search/UserList";
 import { OnlineStatusProvider } from "./lib/context/OnlineContext";
+import GroupChatPage from "./pages/groupChat/GroupChatPage";
+import GroupChatRoom from "./pages/groupChat/GroupChatRoom";
 
 function App() {
   return (
@@ -61,6 +63,9 @@ function App() {
 
               <Route path="chats" element={<ChatPage />} />
               <Route path="chats/:chatId" element={<ChatPage />} />
+
+              <Route path="group-chats" element={<GroupChatPage />} />
+              <Route path="group-chats/:id" element={<GroupChatRoom />} />
 
               <Route path="users" element={<UserList />} />
 
