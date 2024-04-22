@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import DormCard from "../../components/Provider/DormCard";
+import { FaPlus } from "react-icons/fa6";
+import { useState } from "react";
+import FormDialog from "../../components/FormDialog/FormDialog";
 
 function GroupChatPage() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
   const groupsData = [
     {
       id: "1",
@@ -37,6 +50,17 @@ function GroupChatPage() {
           );
         })}
       </ul>
+
+      <button
+        className="fixed text-xl font-extrabold bottom-20 right-10 bg-emerald-500 text-white p-2 rounded-full w-14 h-14 hover:bg-emerald-600"
+        onClick={openDialog}
+      >
+        <div className="flex items-center justify-center">
+          <FaPlus />
+        </div>
+      </button>
+
+      <FormDialog isOpen={isDialogOpen} onClose={closeDialog} />
     </div>
   );
 }
