@@ -9,6 +9,7 @@ import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.routes";
 import dormRouter from "./routes/dorm.routes";
 import chatRouter from "./routes/chat.routes";
+import groupChatRouter from "./routes/groupChat.routes";
 // import bookingRouter from "./routes/booking.routes"
 // import paymentRouter from "./routes/payment.routes"
 // import reviewRouter from "./routes/review.routes"
@@ -56,6 +57,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/dorms", dormRouter);
 // app.use('/api/v1/bookings', bookingRouter)
 app.use("/api/v1/chats", chatRouter);
+app.use("/api/v1/group-chats", groupChatRouter);
 // app.use('/api/v1/payment', paymentRouter)
 // app.use('/api/v1/reviews', reviewRouter)
 // app.use('/api/v1/issues', issueRouter)
@@ -87,6 +89,8 @@ app.post("/login", loginMiddleware, (req: Request, res: Response) => {
   };
   res.send("Login");
 });
+
+app.use("/create-group-chat", chatRouter);
 
 // ----------------------------------------------------------------
 

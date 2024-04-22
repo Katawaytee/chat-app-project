@@ -14,7 +14,34 @@ const GroupChatRoom = () => {
   const [allMessages, setAllMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState("");
 
+  const [groupName, setGroupName] = useState("");
+
   const { currentUser } = useUser();
+
+  useEffect(() => {
+    const fetchGroupName = async () => {
+      try {
+        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/group-chats/${id}`;
+        const response = await fetch(apiUrl, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch groups");
+        }
+        const data = await response.json();
+
+        setGroupName(data.groupName);
+      } catch (error) {
+        console.error("Error fetching groups:", (error as Error).message);
+      }
+    };
+
+    fetchGroupName();
+  }, [id]);
 
   useEffect(() => {
     // Join room when component mounts
@@ -43,9 +70,9 @@ const GroupChatRoom = () => {
       if (!newMessage.text) return;
 
       setAllMessages((prevMessages) => [...prevMessages, newMessage]);
-      socket.emit("send-group-message", newMessage, id); // Send to server
+      socket.emit("send-group-message", newMessage, id);
 
-      setMessage(""); // Clear input field
+      setMessage("");
     }
   };
 
@@ -53,7 +80,7 @@ const GroupChatRoom = () => {
     <div className="flex flex-col" style={{ height: "calc(100vh - 112px)" }}>
       {/* Header */}
       <div className="bg-gray-800 text-white p-4 text-center font-bold text-sm">
-        GROUP {id}
+        {groupName}
       </div>
 
       {/* Chat Messages */}

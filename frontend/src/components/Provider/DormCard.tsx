@@ -17,6 +17,7 @@ export default function DormCard(props: Props) {
   const navigate = useNavigate();
 
   async function handleCreateChat() {
+    if (props.isGroup) return;
     if (!currentUser) return;
 
     const chatId = await createChat(props.id, currentUser.id);
