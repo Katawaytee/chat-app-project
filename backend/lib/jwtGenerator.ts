@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
-export function generateJWT(id: string, displayName: string, firstName: string) {
-    const token = jwt.sign({id: id, displayName: displayName, firstName: firstName},
+export function generateJWT(id: string, displayName: string) {
+    const token = jwt.sign({id: id, displayName: displayName},
         process.env.JWT_SECRET_KEY as string,
         {expiresIn: '3 days'})
     return token

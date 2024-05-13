@@ -10,10 +10,11 @@ interface Message {
 }
 
 const GroupChatRoom = () => {
+  
   let { id } = useParams();
+  
   const [allMessages, setAllMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState("");
-
   const [groupName, setGroupName] = useState("");
 
   const { currentUser } = useUser();

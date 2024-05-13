@@ -3,12 +3,10 @@ import ChatTitle from './ChatTitle'
 import ChatMessageSendBox from './ChatMessageSendBox'
 import ChatMessagePane from './ChatMessagePane'
 import { socket } from '../../../lib/socket'
-import { useParams } from 'react-router-dom'
 import { useUser } from '../../../lib/context/UserContext'
 import { Chat, Message } from '../../../lib/type/Chat'
 
 const ChatPanel = ({ chatId }: { chatId: string }) => {
-  // let { chatId } = useParams();
 
   const {currentUser, isLoading} = useUser()
 
@@ -19,8 +17,6 @@ const ChatPanel = ({ chatId }: { chatId: string }) => {
   const [messages, setMessages] = useState<Message[]>([])
 
   
-
-
   async function initRoom() {
     
     if (!currentUser) return
@@ -68,13 +64,6 @@ const ChatPanel = ({ chatId }: { chatId: string }) => {
     initRoom()
   }, [isLoading, chatId])
 
-  // useEffect(() => {
-  //   console.log(id)
-  // }, [id])
-
-  // useEffect(() => {
-  //   setMessages([])
-  // }, [chatId])
 
   useEffect(() => {
     socket.on(`chats:${chatId}:addMessage`, (message) => addMessage(message))
@@ -83,10 +72,6 @@ const ChatPanel = ({ chatId }: { chatId: string }) => {
       socket.off(`chats:${chatId}:addMessage`)
     };
   }, [messages, chatId])
-
-  // useEffect(() => {
-  //   console.log(messages)
-  // }, [messages])
 
   if (!currentUser || !chatRoom || isInvalid) {
     return <></>

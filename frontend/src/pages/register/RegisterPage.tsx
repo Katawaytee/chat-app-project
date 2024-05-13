@@ -72,12 +72,10 @@ export default function RegisterPage() {
       setEnableButton(true)
     }
     
-    
-    
   }
 
   useEffect(() => {
-    document.title = 'Registration | HorHub'
+    document.title = 'Registration'
   }, [])
   
   return(
@@ -86,7 +84,6 @@ export default function RegisterPage() {
       <div className="rounded-xl border border-emerald-500 mt-8 h-fit bg-white w-full md:w-4/5 lg:w-3/5 pb-8 text-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="mx-10 mt-8 flex flex-col items-center gap-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-6 gap-y-10 mt-10">
-
 
             <div className="relative flex flex-row">
               <IoIosMail className='h-6 w-6 place-self-center text-emerald-500' />

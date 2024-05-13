@@ -1,7 +1,7 @@
-import { useUser } from "../../lib/context/UserContext";
-import { createChat } from "../../lib/chat";
+import { useUser } from "../lib/context/UserContext";
+import { createChat } from "../lib/chat";
 import { useNavigate } from "react-router-dom";
-import Badge from "../Badge/Badge";
+import Badge from "./Badge";
 
 interface Props {
   id: string;
@@ -12,7 +12,7 @@ interface Props {
   isGroup?: boolean;
 }
 
-export default function DormCard(props: Props) {
+export default function MyCard(props: Props) {
   const { currentUser } = useUser();
   const navigate = useNavigate();
 

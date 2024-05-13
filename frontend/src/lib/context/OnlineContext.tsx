@@ -7,25 +7,24 @@ const OnlineStatusContext = React.createContext({
   setOnlineStatus: (status: boolean) => {},
 });
 
-export const OnlineStatusProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const OnlineStatusProvider = ({ children }: { children: React.ReactNode }) => {
+  
   const [isOnline, setOnlineStatus] = useState(false);
   const { currentUser } = useUser();
 
   useEffect(() => {
+    
     if (!currentUser) {
-      socket.emit("offline");
-      setOnlineStatus(false);
-      return;
+      socket.emit("offline")
+      setOnlineStatus(false)
+      return
     }
 
-    socket.emit("new-user-add", currentUser?.id);
+    socket.emit("new-user-add", currentUser?.id)
     socket.on("get-users", (users) => {
-      setOnlineStatus(users.includes(currentUser?.id));
-    });
+      setOnlineStatus(users.includes(currentUser?.id))
+    })
+
   }, [currentUser]);
 
   return (
@@ -33,6 +32,7 @@ export const OnlineStatusProvider = ({
       {children}
     </OnlineStatusContext.Provider>
   );
+
 };
 
 export const useOnlineStatus = () => {

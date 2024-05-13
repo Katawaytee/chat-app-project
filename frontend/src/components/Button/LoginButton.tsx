@@ -27,7 +27,7 @@ const LoginButton = () => {
         });
         if (result.status === 200){
             const res = await result.json();
-            console.log(res.token);
+            console.log(res);
             fetchUser();
             setEmail("");
             setPassword("");

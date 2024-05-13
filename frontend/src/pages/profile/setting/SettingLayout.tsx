@@ -7,22 +7,22 @@ import { useEffect } from "react";
 import { UserInfo } from "../../../lib/type/UserHidden";
 import useAuthRedirect from "../../../lib/authRedirect";
 
-export type SettingContextType = {currentUser : UserInfo,
-                           isLoading : boolean,
-                           fetchUser : () => Promise<boolean>};
+export type SettingContextType = {
+    currentUser : UserInfo,
+    isLoading : boolean,
+    fetchUser : () => Promise<boolean>
+};
 
 export default function SettingLayout(){
-    const {currentUser,isLoading,fetchUser} = useUser();
+    
+    const { currentUser, isLoading, fetchUser } = useUser();
     const navigate = useNavigate();
 
-    
     useAuthRedirect();
     
     useEffect( ()=> {
-        document.title = 'Settings | HorHub'
+        document.title = 'Settings'
     } ,[])
-
-    
 
     if (isLoading || !currentUser) return (<LoadingPage/>);
 

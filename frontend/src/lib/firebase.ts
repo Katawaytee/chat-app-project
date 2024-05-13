@@ -39,3 +39,27 @@ export async function uploadImages(files: Array<ImageType>, path: string): Promi
 
     return result
 }
+
+export async function uploadFile(files: Array<File>, path: string): Promise<Array<string>> {
+  
+  const result = await Promise.all(
+    
+    files.map(async (file) => {
+        
+        const fileRef = ref(storage, `${path}/${(new Date()).getTime()}-${file.name}`)
+        
+        const fileURL = await uploadBytes(fileRef, file).then( async () => {
+          
+          const fileURL = await getDownloadURL(fileRef)
+          return fileURL
+          
+        })
+        
+        return fileURL
+
+    })
+
+  )
+
+  return result
+}

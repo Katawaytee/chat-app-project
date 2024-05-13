@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import DormCard from "../../components/Provider/DormCard";
+import MyCard from "../../components/MyCard";
 import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import FormDialog from "../../components/FormDialog/FormDialog";
+import FormDialog from "../../components/FormDialog";
 
 function GroupChatPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -15,6 +15,10 @@ function GroupChatPage() {
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
+
+  useEffect(() => {
+    document.title = "Group List";
+  }, []);
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -48,7 +52,7 @@ function GroupChatPage() {
           (room: { id: string; groupName: string; imageURL: string }) => {
             return (
               <Link to={`/group-chats/${room.id}`}>
-                <DormCard
+                <MyCard
                   key={room.id}
                   id={room.id}
                   title={room.groupName}

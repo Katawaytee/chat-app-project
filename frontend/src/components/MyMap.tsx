@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  APIProvider,
-  Map,
-  AdvancedMarker,
-  Pin,
-  InfoWindow,
-  MapCameraChangedEvent,
-  MapCameraProps,
-} from "@vis.gl/react-google-maps";
-export default function DormMap({ lat, lng }: { lat: number; lng: number }) {
+import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow, MapCameraChangedEvent, MapCameraProps } from "@vis.gl/react-google-maps";
+
+export default function MyMap({ lat, lng }: { lat: number; lng: number }) {
+  
   const position = { lat: lat, lng: lng };
   const [cameraProps, setCameraProps] = useState<MapCameraProps>({
     center: { lat: lat, lng: lng },

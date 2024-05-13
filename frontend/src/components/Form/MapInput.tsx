@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  APIProvider,
-  Map,
-  AdvancedMarker,
-  Pin,
-  InfoWindow,
-  MapCameraChangedEvent,
-  MapCameraProps,
-} from "@vis.gl/react-google-maps";
+import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow, MapCameraChangedEvent, MapCameraProps } from "@vis.gl/react-google-maps";
+
 export default function MapInput({ lat, lng, setLat, setLng }: { lat: number; lng: number, setLat: React.Dispatch<React.SetStateAction<number>>, setLng: React.Dispatch<React.SetStateAction<number>> }) {
   const position = { lat: lat, lng: lng};
   const [cameraProps, setCameraProps] = useState<MapCameraProps>({

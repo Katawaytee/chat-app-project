@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import buildingSVG from "../../res/svg/homebuilding.svg";
+import phonePNG from "../../res/img/phone.png"
 
 function HomePage() {
+  
   useEffect(() => {
-    document.title = "Home | HorHub";
+    document.title = "Home";
   }, []);
 
   return (
@@ -16,7 +17,7 @@ function HomePage() {
           </span>
         </div>
         <div className="hidden md:flex flex-col w-[50%] h-full justify-center items-center gap-5">
-          <img src={buildingSVG} alt="" />
+          <img src={phonePNG} alt="" />
         </div>
       </div>
     </div>

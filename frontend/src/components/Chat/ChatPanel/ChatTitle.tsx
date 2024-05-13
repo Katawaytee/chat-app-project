@@ -2,7 +2,6 @@ import { Avatar } from '@mui/material'
 import React from 'react'
 import { Chat } from '../../../lib/type/Chat'
 import { useUser } from '../../../lib/context/UserContext'
-import ChatToggleNotificationButton from './ChatToggleNotificationButton'
 
 const ChatTitle = ({ chat }: { chat: Chat | undefined }) => {
 

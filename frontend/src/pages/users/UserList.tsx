@@ -1,4 +1,4 @@
-import DormCard from "../../components/Provider/DormCard";
+import MyCard from "../../components/MyCard";
 import { useEffect, useState } from "react";
 import { socket } from "../../lib/socket";
 import { useUser } from "../../lib/context/UserContext";
@@ -9,6 +9,7 @@ interface onlineUsersType {
 }
 
 function UserList() {
+ 
   const [usersData, setUsersData] = useState<any[]>([]);
   const [onlineUsers, setOnlineUsers] = useState<onlineUsersType[]>([]);
 
@@ -28,31 +29,40 @@ function UserList() {
   }
 
   useEffect(() => {
-    window.document.title = "Dorms List | HorHub";
+    window.document.title = "User List";
     getUsers();
   }, []);
 
   useEffect(() => {
+    
     if (!currentUser) {
       socket.emit("offline");
       return;
     }
 
     socket.emit("new-user-add", currentUser?.id);
+    
     socket.on("get-users", (users) => {
       setOnlineUsers(users);
     });
+
   }, [currentUser]);
 
   useEffect(() => {
+    
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
+        
         socket.emit("new-user-add", currentUser?.id);
+        
         socket.on("get-users", (users) => {
           setOnlineUsers(users);
         });
+
       } else {
+        
         socket.emit("offline");
+        
       }
     };
 
@@ -61,6 +71,7 @@ function UserList() {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
+
   }, [currentUser?.id]);
 
   return (
@@ -68,7 +79,7 @@ function UserList() {
       <ul className="grid max-w-[26rem] sm:max-w-[52.5rem] lg:max-w-7xl w-[100%] mt-[2rem] mb-[4rem] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto gap-6 lg:gap-y-8 xl:gap-x-8  px-4 sm:px-6 lg:px-8">
         {usersData.map((data) => {
           return (
-            <DormCard
+            <MyCard
               key={data.id}
               id={data.id}
               title={data.displayName}

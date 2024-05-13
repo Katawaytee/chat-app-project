@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useUser } from '../../lib/context/UserContext'
 import LoadingPage from '../etc/LoadingPage'
 import NotFoundPage from '../etc/NotFoundPage'
-import ChatSearchBox from '../../components/Chat/ChatSearchBox'
 import ChatListElement from '../../components/Chat/ChatListElement'
 import ChatPanel from '../../components/Chat/ChatPanel/ChatPanel'
 import { Chat } from '../../lib/type/Chat'
@@ -90,18 +89,21 @@ const ChatPage = () => {
     }, [isLoading])
 
     useEffect(() => {
-        window.document.title = "Chats | HorHub"
+        window.document.title = "Chats"
     }, [])
 
     useEffect(() => {
+        
         if (!currentUser) return
+        
         socket.on(`users:${currentUser.id}:chatsUpdate`, () => {
             initChatRooms()
         })
 
         return function cleanup() {
             socket.off(`users:${currentUser.id}:chatsUpdate`)
-          };
+        }
+
     }, [isLoading])
 
 

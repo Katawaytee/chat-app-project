@@ -7,7 +7,7 @@ function NotFoundPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = "Page not found | HorHub"
+        document.title = "Page not found"
     }, [])
 
 

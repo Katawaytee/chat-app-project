@@ -7,7 +7,8 @@ import { useOutletContext } from "react-router-dom";
 
 export default function AccountPage(){
 
-    const {currentUser,isLoading,fetchUser} = useOutletContext<SettingContextType>();
+    const {currentUser, isLoading, fetchUser} = useOutletContext<SettingContextType>();
+
     useEffect(() => {
         fetchUser()
     },[]);

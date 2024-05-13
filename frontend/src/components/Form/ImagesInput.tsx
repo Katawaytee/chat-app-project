@@ -3,7 +3,7 @@ import ImageUploading, {
   ImageListType,
   ImageType,
 } from "react-images-uploading";
-import DeleteButton from "./Button/DeleteButton";
+import DeleteButton from "../Button/DeleteButton";
 import { CiImageOn } from "react-icons/ci";
 import { IoCaretBackOutline, IoCaretForwardOutline } from "react-icons/io5";
 

@@ -8,9 +8,9 @@ import { io } from "..";
 const createRoomBodySchema = z.object({
     participantAId: z.string(),
     participantBId: z.string(),
-  });
+});
 
-//===============================================================
+// ====================================================================================================
 
 //@desc     Get a chat
 //@route    GET chats/:id
@@ -70,6 +70,8 @@ export const getChat = async (req: Request, res: Response) => {
       return res.status(400).send(err);
     }
   };
+
+// ====================================================================================================
 
 //@desc     Create a chat
 //@route    GET chats/
@@ -140,6 +142,8 @@ export const createChat = async (req: Request, res: Response) => {
       return res.status(400).send(err);
     }
 };
+
+// ====================================================================================================
 
 //@desc     Update a chat
 //@route    PUT chats/:id/read

@@ -13,34 +13,13 @@ function MenuBar() {
     const navigate = useNavigate();
     const {currentUser, fetchUser} = useUser();
     const menuList = [
+        
         {
             name: "My Profile",
             icon: <LuUser2 className={iconClassName} />,
             onClick: () => {navigate('/profile')}
         },
-        // {
-        //     name: "My Wallet",
-        //     icon: <IoWalletOutline className={iconClassName} />,
-        //     onClick: () => {navigate('/my-wallet')},
-        //     allow: "Provider"
-        // },
-        // {
-        //     name: "My Reservation",
-        //     icon: <FiBookOpen className={iconClassName} />,
-        //     onClick: () => {navigate('/bookings')},
-        //     allow: "Customer"
-        // },
-        // {
-        //     name: "Dashboard",
-        //     icon: <MdOutlineSpaceDashboard className={iconClassName} />,
-        //     onClick: () => {navigate('/provider/dorms')},
-        //     allow: "Provider"
-        // },
-        // {
-        //     name: "Settings",
-        //     icon: <MdOutlineSettings className={iconClassName} />,
-        //     onClick: () => {navigate('/settings/profile')}
-        // },
+
         {
             name: "Log Out",
             icon: <MdLogout className={iconClassName} />,
@@ -101,7 +80,7 @@ function MenuBar() {
                 }
                 {
                     menuList.map((data, idx) => {
-                        // if (!data.allow || !currentUser) {
+
                             return (
                                 <li key={data.name}>
                                     <button 
@@ -112,43 +91,7 @@ function MenuBar() {
                                     </button>
                                 </li>
                             )
-                        // }
-                        // if (data.allow === "Customer") {
-                        //     if (currentUser.role === "Customer") {
-                        //         return (
-                        //             <li key={data.name}>
-                        //                 <button 
-                        //                     className="w-full flex items-center hover:bg-slate-100"
-                        //                     onClick={data.onClick}>
-                        //                     {data.icon}
-                        //                     <span className="text-sm">{data.name}</span>
-                        //                 </button>
-                        //             </li>
-                        //         )
-                                
-                        //     }
-                        //     else {
-                        //         return;
-                        //     }
-                        // }
-                        // else if (data.allow === "Provider") {
-                        //     if (currentUser.role === "Provider") {
-                        //         return (
-                        //             <li key={data.name}>
-                        //                 <button 
-                        //                     className="w-full flex items-center hover:bg-slate-100"
-                        //                     onClick={data.onClick}>
-                        //                     {data.icon}
-                        //                     <span className="text-sm">{data.name}</span>
-                        //                 </button>
-                        //             </li>
-                        //         )
-                                
-                        //     }
-                        //     else {
-                        //         return;
-                        //     }
-                        // }
+
                     })
                 }
                 
